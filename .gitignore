@@ -1,0 +1,8 @@
+# class files
+*.class
+
+# IDE files
+.vscode
+
+# task storage files
+data/

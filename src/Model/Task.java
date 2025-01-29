@@ -1,42 +1,49 @@
 package Model;
 
+import java.util.UUID;
+
 public class Task {
-    private String name, description;
+    private String name, description, id;
     private boolean isCompleted;
 
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
         isCompleted = false;
+        id = UUID.randomUUID().toString();
     }
 
     //getters and setters
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    boolean isCompleted() {
+    public boolean isCompleted() {
         return isCompleted;
     }
 
-    void setCompleted(boolean isCompleted) {
+    public void setCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override
     public String toString() {
-        return name + (isCompleted ? "✓" : "X");
+        return (isCompleted ? "✓" : "X") + ": " + name +": " + description;
     }
 }

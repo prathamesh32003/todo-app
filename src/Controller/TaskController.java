@@ -15,4 +15,18 @@ public class TaskController {
         taskService.addTask(name, description);
         return true;
     }
+
+    public boolean deleteTaskByIndex(int index) {
+        boolean isDeleted = taskService.deleteTaskByIndex(index);
+
+        if(!isDeleted) {
+            System.out.println("Error deleting task!");
+            return false;
+        }
+        return true;
+    }
+
+    public void showAllTasks() {
+        taskService.showAllTasks();
+    }
 }

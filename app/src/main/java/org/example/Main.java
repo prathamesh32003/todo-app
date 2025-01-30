@@ -34,7 +34,7 @@ public class Main {
                     break;
             
                 default:
-                    System.out.println("Wrong choice!");;
+                    System.out.println("Wrong choice!");
             }
         }
     }

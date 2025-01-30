@@ -1,8 +1,38 @@
-# class files
+# Ignore compiled class files
 *.class
 
-# IDE files
+# Ignore IDE files and project-specific settings
 .vscode
+.idea/
 
-# task storage files
-data/
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build/
+
+# Ignore OS-specific files
+.DS_Store            # macOS file
+Thumbs.db            # Windows thumbnail cache
+
+# Ignore logs
+*.log
+
+# Ignore test reports (if any)
+test-logs/
+
+# Ignore dependencies (e.g., for Gradle)
+*.jar
+*.war
+*.ear
+
+# Ignore generated files (e.g., from running Gradle tasks)
+*.war
+
+# Ignore IDE-specific configuration (if using IntelliJ IDEA or Eclipse)
+*.iml                # IntelliJ project files
+.gradle/
+.idea/
+
+# Ignore task data file (if you don't want to commit this, such as tasks.json)
+tasks.json

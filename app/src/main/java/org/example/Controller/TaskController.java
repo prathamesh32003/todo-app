@@ -1,4 +1,4 @@
-package Controller;
+package org.example.Controller;
 
 public class TaskController {
     private TaskService taskService;
@@ -45,6 +45,16 @@ public class TaskController {
 
         if(!isDeleted) {
             System.out.println("Error deleting task!");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean saveToFile() {
+        boolean isSaved = taskService.saveToFile();
+
+        if(!isSaved) {
+            System.out.println("Error writing file!");
             return false;
         }
         return true;

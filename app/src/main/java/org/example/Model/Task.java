@@ -1,9 +1,9 @@
-package Model;
+package org.example.Model;
 
 import java.util.UUID;
 
 public class Task {
-    private String name, description, id;
+    private String id, name, description;
     private boolean isCompleted;
 
     public Task(String name, String description) {

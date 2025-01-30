@@ -1,6 +1,8 @@
+package org.example;
+
 import java.util.Scanner;
 
-import Controller.TaskController;
+import org.example.Controller.TaskController;
 
 public class Main {
     static TaskController tc;

@@ -9,7 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while(true) {
-            System.out.println("1. Add New Task 2. Delete Task 3. Show all Tasks");
+            System.out.println("1. Add New Task 2. Toggle Task 3. Show all Tasks 4. Delete Task");
             int ch = sc.nextInt();
 
             switch (ch) {
@@ -18,17 +18,21 @@ public class Main {
                     break;
                 
                 case 2:
-                    deleteTask();
+                    toggleTaskComplete();
                     break;
                 
                 case 3:
                     tc.showAllTasks();
                     break;
+                
+                case 4:
+                    deleteTask();
+                    break;
             
                 default:
                     System.out.println("Wrong choice!");;
             }
-        }  
+        }
     }
 
     static void addTask() {
@@ -43,10 +47,21 @@ public class Main {
         tc.addTask(name, desc);
     }
 
+    static void toggleTaskComplete() {
+        Scanner sc = new Scanner(System.in);
+
+        tc.showAllTasks();
+        System.out.println("Enter the ID of the task: ");
+        int index = sc.nextInt();
+
+        tc.toggleTaskComplete(index);
+    }
+
     static void deleteTask() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enther the ID of the task: ");
+        tc.showAllTasks();
+        System.out.println("Enter the ID of the task: ");
         int index = sc.nextInt();
 
         tc.deleteTaskByIndex(index);

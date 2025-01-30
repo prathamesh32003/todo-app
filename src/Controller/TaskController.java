@@ -16,6 +16,16 @@ public class TaskController {
         return true;
     }
 
+    public boolean toggleTaskComplete(int index) {
+        boolean isToggled = taskService.toggleTaskComplete(index);
+
+        if(!isToggled) {
+            System.out.println("Error toggling task!");
+            return false;
+        }
+        return true;
+    }
+
     public boolean deleteTaskByIndex(int index) {
         boolean isDeleted = taskService.deleteTaskByIndex(index);
 

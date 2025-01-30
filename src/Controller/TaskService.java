@@ -11,19 +11,25 @@ public class TaskService {
         //read tassk from file
     }
 
+    public void showAllTasks() {
+        if(tasks.isEmpty()) {
+           System.out.println("There are no tasks available!");
+           return;
+        }
+
+        for(Task task:tasks.values()) {
+            System.out.println(task.getId() + ": " + task.toString());
+        }
+    }
+
     public void addTask(String name, String description) {
         Task task = new Task(name, description);
         tasks.put(task.getId(), task);
     }
 
-    public boolean toggleTaskComplete(int index) {
-        if(index < 1 || index > tasks.size()) {
-            return false;
-        }
-
-        Task task = tasks.get(getTaskIdByIndex(index));
-
-        if(task != null) {
+    public boolean toggleTaskComplete(String id) {
+        if(tasks.containsKey(id)) {
+            Task task = tasks.get(id);
             task.setCompleted(!task.isCompleted());
             return true;
         }
@@ -31,41 +37,23 @@ public class TaskService {
         return false;
     }
 
-    public void showAllTasks() {
-        if(tasks.isEmpty()) {
-           System.out.println("There are no tasks available!");
-           return;
-        }
-
-        int index = 1;        
-        for(Task task:tasks.values()) {
-            System.out.println(index + ". " + task.toString());
-        }
-    }
-
-    public boolean deleteTaskByIndex(int index) {
-        if(index < 1 || index > tasks.size()) {
-            return false;
-        }
-
-        String taskId = getTaskIdByIndex(index);
-
-        if(taskId != null) {
-            tasks.remove(taskId);
+    public boolean modifyTask(String id, String name, String desc) {
+        if(tasks.containsKey(id)) {
+            Task task = tasks.get(id);
+            task.setName(name);
+            task.setDescription(desc);
             return true;
         }
 
         return false;
     }
 
-    private String getTaskIdByIndex(int index) {
-        int currentIndex = 1;
-        for(String TaskId:tasks.keySet()) {
-            if(currentIndex == index) {
-                return TaskId;
-            }
-            currentIndex += 1;
+    public boolean deleteTask(String id) {
+        if(tasks.containsKey(id)) {
+            tasks.remove(id);
+            return true;
         }
-        return null;
+
+        return false;
     }
 }

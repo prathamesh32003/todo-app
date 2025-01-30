@@ -7,6 +7,10 @@ public class TaskController {
         this.taskService = new TaskService();
     }
 
+    public void showAllTasks() {
+        taskService.showAllTasks();
+    }
+
     public boolean addTask(String name, String description) {
         if(name == null || name.trim().isEmpty()) {
             System.out.println("Cannot add task, name cannot be empty!");
@@ -16,8 +20,8 @@ public class TaskController {
         return true;
     }
 
-    public boolean toggleTaskComplete(int index) {
-        boolean isToggled = taskService.toggleTaskComplete(index);
+    public boolean toggleTaskComplete(String id) {
+        boolean isToggled = taskService.toggleTaskComplete(id);
 
         if(!isToggled) {
             System.out.println("Error toggling task!");
@@ -26,17 +30,23 @@ public class TaskController {
         return true;
     }
 
-    public boolean deleteTaskByIndex(int index) {
-        boolean isDeleted = taskService.deleteTaskByIndex(index);
+    public boolean modifyTask(String id, String name, String desc) {
+        boolean isModified = taskService.modifyTask(id, name, desc);
+
+        if(!isModified) {
+            System.out.println("Error modifying task!");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean deleteTaskByIndex(String id) {
+        boolean isDeleted = taskService.deleteTask(id);
 
         if(!isDeleted) {
             System.out.println("Error deleting task!");
             return false;
         }
         return true;
-    }
-
-    public void showAllTasks() {
-        taskService.showAllTasks();
     }
 }
